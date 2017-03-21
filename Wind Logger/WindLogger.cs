@@ -13,7 +13,6 @@ namespace Wind_Logger
         private ssl_windlogger form = null;
         private RichTextBox log = null;
         private RichTextBox help = null;
-        private Chart windChart = null;
 
         private int x = 0;
 
@@ -22,7 +21,6 @@ namespace Wind_Logger
             this.form = form;
             log = form.Controls.Find("txt_log", false)[0] as RichTextBox;
             help = form.Controls.Find("txt_help", false)[0] as RichTextBox;
-            windChart = form.Controls.Find("wind_chart", false)[0] as Chart;
         }
 
         public void LogWind(int wind)
@@ -33,9 +31,6 @@ namespace Wind_Logger
                 log.AppendText("◄ " + (-1*wind) + Environment.NewLine);
             else
                 log.AppendText(wind + Environment.NewLine);
-
-            windChart.Series["wind_history"].Points.Add(new DataPoint(x, wind));
-            x++;
         }
 
         public void HandleHotkey(string key)
@@ -74,13 +69,6 @@ namespace Wind_Logger
                     ClearLog();
                     break;
 
-                case "F9":
-                    if (windChart.Visible)
-                        windChart.Hide();
-                    else
-                        windChart.Show();
-                    break;
-
                 case "F10":
                     if (help.Visible)
                         help.Hide();
@@ -101,8 +89,6 @@ namespace Wind_Logger
         public void ClearLog()
         {
             log.Clear();
-            windChart.Series["wind_history"].Points.Clear();
-            x = 0;
         }
     }
 }
