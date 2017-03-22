@@ -42,11 +42,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_log = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_log = new System.Windows.Forms.Button();
             this.txt_wind = new System.Windows.Forms.TextBox();
-            this.btn_clear = new System.Windows.Forms.Button();
-            this.wind_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btn_graph = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
+            this.btn_log = new System.Windows.Forms.Button();
+            this.wind_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txt_help = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -161,22 +161,22 @@
             this.panel2.Size = new System.Drawing.Size(329, 35);
             this.panel2.TabIndex = 3;
             // 
-            // btn_log
-            // 
-            this.btn_log.Location = new System.Drawing.Point(97, 3);
-            this.btn_log.Name = "btn_log";
-            this.btn_log.Size = new System.Drawing.Size(75, 28);
-            this.btn_log.TabIndex = 0;
-            this.btn_log.Text = "Log";
-            this.btn_log.UseVisualStyleBackColor = true;
-            this.btn_log.Click += new System.EventHandler(this.btn_log_Click);
-            // 
             // txt_wind
             // 
             this.txt_wind.Location = new System.Drawing.Point(3, 6);
             this.txt_wind.Name = "txt_wind";
             this.txt_wind.Size = new System.Drawing.Size(88, 20);
             this.txt_wind.TabIndex = 1;
+            // 
+            // btn_graph
+            // 
+            this.btn_graph.Location = new System.Drawing.Point(259, 3);
+            this.btn_graph.Name = "btn_graph";
+            this.btn_graph.Size = new System.Drawing.Size(67, 28);
+            this.btn_graph.TabIndex = 0;
+            this.btn_graph.Text = "Graph";
+            this.btn_graph.UseVisualStyleBackColor = true;
+            this.btn_graph.Click += new System.EventHandler(this.btn_graph_Click);
             // 
             // btn_clear
             // 
@@ -187,6 +187,16 @@
             this.btn_clear.Text = "Clear";
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
+            // btn_log
+            // 
+            this.btn_log.Location = new System.Drawing.Point(97, 3);
+            this.btn_log.Name = "btn_log";
+            this.btn_log.Size = new System.Drawing.Size(75, 28);
+            this.btn_log.TabIndex = 0;
+            this.btn_log.Text = "Log";
+            this.btn_log.UseVisualStyleBackColor = true;
+            this.btn_log.Click += new System.EventHandler(this.btn_log_Click);
             // 
             // wind_chart
             // 
@@ -210,16 +220,6 @@
             this.wind_chart.Size = new System.Drawing.Size(490, 340);
             this.wind_chart.TabIndex = 4;
             this.wind_chart.Text = "Wind Chart";
-            // 
-            // btn_graph
-            // 
-            this.btn_graph.Location = new System.Drawing.Point(259, 3);
-            this.btn_graph.Name = "btn_graph";
-            this.btn_graph.Size = new System.Drawing.Size(67, 28);
-            this.btn_graph.TabIndex = 0;
-            this.btn_graph.Text = "Graph";
-            this.btn_graph.UseVisualStyleBackColor = true;
-            this.btn_graph.Click += new System.EventHandler(this.btn_graph_Click);
             // 
             // txt_help
             // 
@@ -254,7 +254,7 @@
             this.MaximizeBox = false;
             this.Name = "ssl_windlogger";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "ShellShock Live Wind Logger 1.0";
+            this.Text = "ShellShock Live Wind Logger 1.1";
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.ssl_windlogger_Activated);
             this.Deactivate += new System.EventHandler(this.ssl_windlogger_Deactivate);
