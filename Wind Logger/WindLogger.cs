@@ -17,6 +17,8 @@ namespace Wind_Logger
 
         private int x = 0;
 
+        private int? lastWind = null;
+
         public WindLogger(ssl_windlogger form)
         {
             this.form = form;
@@ -27,12 +29,41 @@ namespace Wind_Logger
 
         public void LogWind(int wind)
         {
-            if(wind > 0)
-                log.AppendText(wind + " ►" + Environment.NewLine);
-            else if(wind < 0)
-                log.AppendText("◄ " + (-1*wind) + Environment.NewLine);
+            int deltaWind = 0;
+
+            if (lastWind == null)
+            {
+                deltaWind = wind;
+            }
             else
-                log.AppendText(wind + Environment.NewLine);
+            {
+                deltaWind = wind - (int)lastWind;
+            }
+
+            lastWind = wind;
+
+            string dws = "";
+
+            /*if (deltaWind > 0)
+                dws = "\t(∆ = " + deltaWind + " ►, ∆ѳ = " + (deltaWind / 10) + "°)";
+            else if (deltaWind < 0)
+                dws = "\t(∆ = ◄ " + (-1 * deltaWind) + ", ∆ѳ = " + (deltaWind / 10) + "°)" ;
+            else
+                dws = "\t(∆ = " + deltaWind + ", ∆ѳ = 0°)";*/
+
+            if (deltaWind > 0)
+                dws = "\t(∆ = " + deltaWind + " ►)";
+            else if (deltaWind < 0)
+                dws = "\t(∆ = ◄ " + (-1 * deltaWind) + ")";
+            else
+                dws = "\t(∆ = " + deltaWind + ")";
+
+            if (wind > 0)
+                log.AppendText(wind + " ►" + dws + Environment.NewLine);
+            else if(wind < 0)
+                log.AppendText("◄ " + (-1 * wind) + dws + Environment.NewLine);
+            else
+                log.AppendText(wind + dws + Environment.NewLine);
 
             windChart.Series["wind_history"].Points.Add(new DataPoint(x, wind));
             x++;
