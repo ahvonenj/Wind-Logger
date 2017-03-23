@@ -125,5 +125,15 @@ namespace Wind_Logger
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            windlogger.SwitchEnemydir();
+
+            if (windlogger.GetEnemyDir() == 1)
+                btn_dir.Text = "Enemy dir [►]";
+            else
+                btn_dir.Text = "Enemy dir [◄]";
+        }
     }
 }

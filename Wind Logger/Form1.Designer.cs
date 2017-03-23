@@ -48,9 +48,12 @@
             this.btn_log = new System.Windows.Forms.Button();
             this.wind_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txt_help = new System.Windows.Forms.RichTextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_dir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wind_chart)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_l30
@@ -203,6 +206,7 @@
             this.wind_chart.BorderlineColor = System.Drawing.Color.Black;
             chartArea1.Name = "ChartArea1";
             this.wind_chart.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.wind_chart.Legends.Add(legend1);
             this.wind_chart.Location = new System.Drawing.Point(335, 3);
@@ -217,7 +221,7 @@
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             this.wind_chart.Series.Add(series1);
-            this.wind_chart.Size = new System.Drawing.Size(490, 340);
+            this.wind_chart.Size = new System.Drawing.Size(490, 381);
             this.wind_chart.TabIndex = 4;
             this.wind_chart.Text = "Wind Chart";
             // 
@@ -235,13 +239,32 @@
     "";
             this.txt_help.Visible = false;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btn_dir);
+            this.panel3.Location = new System.Drawing.Point(3, 345);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(329, 39);
+            this.panel3.TabIndex = 6;
+            // 
+            // btn_dir
+            // 
+            this.btn_dir.Location = new System.Drawing.Point(3, 4);
+            this.btn_dir.Name = "btn_dir";
+            this.btn_dir.Size = new System.Drawing.Size(88, 31);
+            this.btn_dir.TabIndex = 0;
+            this.btn_dir.Text = "Enemy dir [►]";
+            this.btn_dir.UseVisualStyleBackColor = true;
+            this.btn_dir.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ssl_windlogger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(828, 345);
+            this.ClientSize = new System.Drawing.Size(828, 387);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.txt_help);
             this.Controls.Add(this.wind_chart);
             this.Controls.Add(this.panel2);
@@ -254,7 +277,7 @@
             this.MaximizeBox = false;
             this.Name = "ssl_windlogger";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "ShellShock Live Wind Logger 1.1";
+            this.Text = "ShellShock Live Wind Logger 1.3";
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.ssl_windlogger_Activated);
             this.Deactivate += new System.EventHandler(this.ssl_windlogger_Deactivate);
@@ -265,6 +288,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wind_chart)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -287,6 +311,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart wind_chart;
         private System.Windows.Forms.Button btn_graph;
         private System.Windows.Forms.RichTextBox txt_help;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btn_dir;
     }
 }
 

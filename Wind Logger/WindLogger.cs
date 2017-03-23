@@ -16,6 +16,7 @@ namespace Wind_Logger
         private Chart windChart = null;
 
         private int x = 0;
+        private int enemyDir = 1;
 
         private int? lastWind = null;
 
@@ -44,21 +45,28 @@ namespace Wind_Logger
 
             string dws = "";
 
-            /*if (deltaWind > 0)
-                dws = "\t(∆ = " + deltaWind + " ►, ∆ѳ = " + (deltaWind / 10) + "°)";
-            else if (deltaWind < 0)
-                dws = "\t(∆ = ◄ " + (-1 * deltaWind) + ", ∆ѳ = " + (deltaWind / 10) + "°)" ;
-            else
-                dws = "\t(∆ = " + deltaWind + ", ∆ѳ = 0°)";*/
-
             if (deltaWind > 0)
+                if(enemyDir == 1)
+                    dws = "\t(∆ = " + deltaWind + " ►, ∆ѳ = ◄ " + (deltaWind / 10) + "°)";
+                else
+                    dws = "\t(∆ = ◄ " + (-1 * deltaWind) + ", ∆ѳ = " + (deltaWind / 10) + "° ►)";
+
+            else if (deltaWind < 0)
+                if(enemyDir == 1)
+                    dws = "\t(∆ = ◄ " + (-1 * deltaWind) + ", ∆ѳ = " + Math.Abs(deltaWind / 10) + "° ►)";
+                else
+                    dws = "\t(∆ = ◄ " + (-1 * deltaWind) + ", ∆ѳ = ◄ " + Math.Abs(deltaWind / 10) + "°)";
+            else
+                dws = "\t(∆ = " + deltaWind + ", ∆ѳ = 0°)";
+
+            /*if (deltaWind > 0)
                 dws = "\t(∆ = " + deltaWind + " ►)";
             else if (deltaWind < 0)
                 dws = "\t(∆ = ◄ " + (-1 * deltaWind) + ")";
             else
-                dws = "\t(∆ = " + deltaWind + ")";
+                dws = "\t(∆ = " + deltaWind + ")";*/
 
-            if (wind > 0)
+           if (wind > 0)
                 log.AppendText(wind + " ►" + dws + Environment.NewLine);
             else if(wind < 0)
                 log.AppendText("◄ " + (-1 * wind) + dws + Environment.NewLine);
@@ -67,6 +75,21 @@ namespace Wind_Logger
 
             windChart.Series["wind_history"].Points.Add(new DataPoint(x, wind));
             x++;
+        }
+
+        public void SwitchEnemydir()
+        {
+            enemyDir *= -1;
+
+            if(enemyDir == -1)
+                log.AppendText("Expecting enemy to be on the left" + Environment.NewLine);
+            else
+                log.AppendText("Expecting enemy to be on the right" + Environment.NewLine);
+        }
+
+        public int GetEnemyDir()
+        {
+            return enemyDir;
         }
 
         public void HandleHotkey(string key)
